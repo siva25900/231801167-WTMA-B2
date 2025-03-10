@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            background-color: #28f7e1;
+        }
+        
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Signup Form</h2>
+        <form id="signupForm">
+            <label>First Name:</label>
+            <input type="text" id="firstName">
+            <div class="error" id="firstNameError"></div>
+
+            <label>Last Name:</label>
+            <input type="text" id="lastName">
+            <div class="error" id="lastNameError"></div>
+
+            <label>Email:</label>
+            <input type="email" id="email">
+            <div class="error" id="emailError"></div>
+
+            <label>Date of Birth:</label>
+            <input type="date" id="dob">
+            <div class="error" id="dobError"></div>
+
+            <label>Age:</label>
+            <input type="number" id="age">
+            <div class="error" id="ageError"></div>
+
+            <label>Gender:</label>
+            <input type="radio" name="gender" value="Male"> Male
+            <input type="radio" name="gender" value="Female"> Female
+            <input type="radio" name="gender" value="Other"> Other
+            <div class="error" id="genderError"></div>
+
+            <label>Phone Number:</label>
+            <input type="tel" id="phone">
+            <div class="error" id="phoneError"></div>
+
+            <label>Address:</label>
+            <textarea id="address"></textarea>
+            <div class="error" id="addressError"></div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let isValid = true;
+
+            let firstName = document.getElementById("firstName").value.trim();
+            let lastName = document.getElementById("lastName").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let dob = document.getElementById("dob").value.trim();
+            let age = document.getElementById("age").value.trim();
+            let gender = document.querySelector('input[name="gender"]:checked');
+            let phone = document.getElementById("phone").value.trim();
+            let address = document.getElementById("address").value.trim();
+
+            // Basic Validations
+            if (!/^[A-Za-z]{4,}$/.test(firstName)) { document.getElementById("firstNameError").textContent = "Min 4 letters."; isValid = false; }
+            if (!/^[A-Za-z]{1,}$/.test(lastName)) { document.getElementById("lastNameError").textContent = "Required."; isValid = false; }
+            if (!/^\d{2}$/.test(age)) { document.getElementById("ageError").textContent = "2-digit age required."; isValid = false; }
+            if (!gender) { document.getElementById("genderError").textContent = "Select one."; isValid = false; }
+            if (!/^\d{10}$/.test(phone)) { document.getElementById("phoneError").textContent = "10 digits only."; isValid = false; }
+            if (address === "") { document.getElementById("addressError").textContent = "Required."; isValid = false; }
+
+            if (!isValid) return;
+
+            // Store data in localStorage
+            localStorage.setItem("firstName", firstName);
+            localStorage.setItem("lastName", lastName);
+            localStorage.setItem("email", email);
+            localStorage.setItem("dob", dob);
+            localStorage.setItem("age", age);
+            localStorage.setItem("gender", gender.value);
+            localStorage.setItem("phone", phone);
+            localStorage.setItem("address", address);
+
+            // Redirect to next page
+            window.location.href = "success.html";
+        });
+    </script>
+</body>
+</html>
