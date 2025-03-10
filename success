@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Successful</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #28f7e1;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        h2 {
+            color: green;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Signup Successful!</h2>
+        <table>
+            <tr>
+                <th>Field</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td id="displayFirstName"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td id="displayLastName"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td id="displayEmail"></td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td id="displayDob"></td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td id="displayAge"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td id="displayGender"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td id="displayPhone"></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td id="displayAddress"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById("displayFirstName").textContent = localStorage.getItem("firstName");
+        document.getElementById("displayLastName").textContent = localStorage.getItem("lastName");
+        document.getElementById("displayEmail").textContent = localStorage.getItem("email");
+        document.getElementById("displayDob").textContent = localStorage.getItem("dob");
+        document.getElementById("displayAge").textContent = localStorage.getItem("age");
+        document.getElementById("displayGender").textContent = localStorage.getItem("gender");
+        document.getElementById("displayPhone").textContent = localStorage.getItem("phone");
+        document.getElementById("displayAddress").textContent = localStorage.getItem("address");
+    </script>
+</body>
+</html>
+
+
